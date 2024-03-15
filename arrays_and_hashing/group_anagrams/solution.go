@@ -18,3 +18,5 @@ func groupAnagrams(strs []string) [][]string {
 		sort.Sort()
     }
 }
+
+// how can I create a sorting algorithm
