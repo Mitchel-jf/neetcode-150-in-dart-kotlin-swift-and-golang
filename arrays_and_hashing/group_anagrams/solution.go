@@ -1,8 +1,4 @@
-package groupAnagrams
-
-import (
-    "sort"
-)
+import "sort"
 
 func groupAnagrams(strs []string) [][]string {
     // create a hasmap of string -> string array
@@ -13,11 +9,34 @@ func groupAnagrams(strs []string) [][]string {
     // return the values of the map
 
     store := make(map[string][]string)
-
+    result := [][]string{}
     for _, v := range strs {
-		sort.Sort()
+        sorted := SortString(v)
+        store[sorted] = append(store[sorted], v)
     }
+    for _, v := range result {
+        result = append(result, v)
+    }
+    return result
+
 }
 
-// how can I create a sorting algorithm
-// this is very important
+type sortRunes []rune
+
+func (s sortRunes) Less(i, j int) bool {
+    return s[i] < s[j]
+}
+
+func (s sortRunes) Swap(i, j int) {
+    s[i], s[j] = s[j], s[i]
+}
+
+func (s sortRunes) Len() int {
+    return len(s)
+}
+
+func SortString(s string) string {
+    r := []rune(s)
+    sort.Sort(sortRunes(r))
+    return string(r)
+}
