@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"sort"
 )
 
@@ -22,7 +21,6 @@ func groupAnagrams(strs []string) [][]string {
 
     for _, v := range store {
         result = append(result, v)
-        fmt.Println(v)
     }
     return result
 
@@ -46,9 +44,4 @@ func SortString(s string) string {
     r := []rune(s)
     sort.Sort(sortRunes(r))
     return string(r)
-}
-
-func main(){
- grouped := groupAnagrams([]string{"eat","tea","tan","ate","nat","bat"})
- fmt.Println(grouped)
 }
