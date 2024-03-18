@@ -1,4 +1,9 @@
-import "sort"
+package main
+
+import (
+	"fmt"
+	"sort"
+)
 
 func groupAnagrams(strs []string) [][]string {
     // create a hasmap of string -> string array
@@ -8,14 +13,16 @@ func groupAnagrams(strs []string) [][]string {
     // else put it as an array in the map
     // return the values of the map
 
-    store := make(map[string][]string)
+    store := map[string][]string{}
     result := [][]string{}
     for _, v := range strs {
         sorted := SortString(v)
         store[sorted] = append(store[sorted], v)
     }
-    for _, v := range result {
+
+    for _, v := range store {
         result = append(result, v)
+        fmt.Println(v)
     }
     return result
 
@@ -39,4 +46,9 @@ func SortString(s string) string {
     r := []rune(s)
     sort.Sort(sortRunes(r))
     return string(r)
+}
+
+func main(){
+ grouped := groupAnagrams([]string{"eat","tea","tan","ate","nat","bat"})
+ fmt.Println(grouped)
 }
