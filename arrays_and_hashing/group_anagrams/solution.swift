@@ -7,5 +7,7 @@ class Solution {
         // append str if it exists
         // save put str in a new list and save it to the hashmap
         // return the values of the hashmap
+        var store: [String: [String]] = [:];
+        
     }
 }
